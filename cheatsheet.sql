@@ -110,6 +110,9 @@ INSERT INTO groupByTable VALUES
 
 SELECT grp, COUNT(val) AS "Item in grp" FROM groupByTable GROUP BY grp; # Puts all the rows with the same value in the given column into a grp and by using COUNT(val) we return the number of rows in each of the grps
 
+# Having Clause (Like where but for agreegate functions)
+SELECT grp, AVG(val) AS "Average" FROM groupByTable GROUP BY grp HAVING AVG(val) <= 20; # Only displays grps with avg val less than or equal to 20
+
 # If null
 UPDATE employees SET salary = IFNULL(salary, 1000) + IFNULL(bonus, 0) WHERE id > -1; # If the value is null then the given value is used 
 UPDATE employees SET bonus = IFNULL(bonus, 0) WHERE id > -1; 
@@ -189,4 +192,3 @@ SELECT * FROM table1, table2;
 
 # Cross Product
 SELECT * from table1 CROSS JOIN table2;
-
